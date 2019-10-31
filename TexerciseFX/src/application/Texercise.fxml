@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DisplayController">
+  <tabs>
+    <Tab fx:id="importTab" text="問題取り込み">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="submit" layoutX="267.0" layoutY="195.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="30.0" prefWidth="66.0" text="submit">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <Label layoutX="116.0" layoutY="127.0" text="問題を作成します。取り込むファイル名を入力してください">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="filePath" layoutX="204.0" layoutY="161.0" prefHeight="25.0" prefWidth="192.0" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab fx:id="exerciseTab" text="出題・回答">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="sendAnswer" layoutX="331.0" layoutY="241.0" mnemonicParsing="false" text="回答する" />
+                  <ComboBox fx:id="answer" layoutX="186.0" layoutY="241.0" prefHeight="25.0" prefWidth="109.0" promptText="回答を選択" />
+                  <TextArea fx:id="questionText" layoutX="85.0" layoutY="104.0" prefHeight="117.0" prefWidth="421.0" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

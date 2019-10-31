@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DisplayController">
+  <tabs>
+    <Tab fx:id="importTab" text="Import">
+      <content>
+        <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="button">
+               <children>
+                  <Button fx:id="submit" layoutX="252.0" layoutY="89.0" mnemonicParsing="false" onAction="#submit" prefHeight="41.0" prefWidth="81.0" styleClass=".button" stylesheets="@button.css" text="submit">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Label fx:id="importLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="176.0" layoutY="14.0" text="ファイル名を入力してください" textAlignment="CENTER">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="userInput" alignment="TOP_LEFT" layoutX="170.0" layoutY="46.0" prefHeight="39.0" prefWidth="253.0" promptText="例：Sample.txt">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
+                  <Label fx:id="submitLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="145.0" layoutY="141.0" prefHeight="89.0" prefWidth="303.0" textAlignment="JUSTIFY">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab fx:id="exTab" onSelectionChanged="#startExercise" text="Exercise">
+      <content>
+        <AnchorPane fx:id="e" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="submitAns" layoutX="392.0" layoutY="173.0" mnemonicParsing="false" onAction="#sendChoice" styleClass=".button" stylesheets="@button.css" text="answer">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <TextArea fx:id="exText" editable="false" layoutX="85.0" layoutY="3.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="148.0" prefWidth="421.0" promptText="ここに問題を表示">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets></TextArea>
+                  <RadioButton fx:id="btn1" layoutX="141.0" layoutY="180.0" mnemonicParsing="false" onAction="#onClickBtn1" text="1">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="ansBtn" />
+                     </toggleGroup>
+                     <font>
+                        <Font size="18.0" />
+                     </font></RadioButton>
+                  <RadioButton fx:id="btn2" layoutX="203.0" layoutY="180.0" mnemonicParsing="false" onAction="#onClickBtn2" text="2" toggleGroup="$ansBtn">
+                     <font>
+                        <Font size="18.0" />
+                     </font></RadioButton>
+                  <RadioButton fx:id="btn3" layoutX="267.0" layoutY="180.0" mnemonicParsing="false" onAction="#onClickBtn3" text="3" toggleGroup="$ansBtn">
+                     <font>
+                        <Font size="18.0" />
+                     </font></RadioButton>
+                  <RadioButton fx:id="btn4" layoutX="329.0" layoutY="180.0" mnemonicParsing="false" onAction="#onClickBtn4" text="4" toggleGroup="$ansBtn">
+                     <font>
+                        <Font size="18.0" />
+                     </font></RadioButton>
+                  <Label fx:id="choiceLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="153.0" prefHeight="27.0" prefWidth="220.0" textAlignment="JUSTIFY">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
