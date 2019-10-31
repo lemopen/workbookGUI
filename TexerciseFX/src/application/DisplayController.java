@@ -150,6 +150,7 @@ public class DisplayController {
 					importLabel.setText("\t" + Sentence.importComp);
 					submitLabel.setText(Sentence.whichWord);
 				}else {
+					userInput.setText("");
 					submitLabel.setText(Sentence.fileNotFound);
 				}
 			}
@@ -167,11 +168,6 @@ public class DisplayController {
 				ArrayList<String> list = getQuestions();
 				setQuestions(buildQuestions(list, str));
 				submitLabel.setText(Sentence.goToExercise);
-
-				ArrayList<String> arr = getQuestions();
-				for(String a : arr) {
-					System.out.println(a);
-				}
 			}
 		}
 	}
@@ -198,42 +194,48 @@ public class DisplayController {
 	//	//回答と答えを比較し、ラベルに正誤、ボックスに次の問題を表示
 	//	@FXML
 	public void sendChoice() throws InterruptedException {
-		String ans = getAnswers().get(count);
-		if (getChoice().equals("")) {
-			choiceLabel.setText("先に回答を選んでください");
-		} else {
-			if (compareChoiceWithAnswer()) {
-				choiceLabel.setText("正解！");
-				choiceLabel.setStyle("-fx-text-fill: black;");
-			} else {
-				choiceLabel.setText("残念…正解は" + ans + "です");
+		if(count == getAnswers().size() -1) {
+		}else {
+			String ans = getAnswers().get(count);
+			if (getChoice().equals("")) {
+				choiceLabel.setText("先に回答を選んでください");
 				choiceLabel.setStyle("-fx-text-fill: red;");
-			}
-			//少し時間を置いて
-			new Thread(new Runnable() {
-				@Override
-				public void run() {
-					try {
-						Thread.sleep(1500);
-					} catch (Exception e) {
-					}
-					Platform.runLater(new Runnable() {//次の問題を表示する
-						@Override
-						public void run() {
-							choiceLabel.setText("");
-							if(count == getAnswers().size() -1) {
-								choiceLabel.setText("全問終了しました！");
-								choiceLabel.setStyle("-fx-text-fill: black;");
-							}else {
-								count++;
-								unselect();
-								showExercise(count);
-							}
-						}
-					});
+			} else {
+				if (compareChoiceWithAnswer()) {
+					choiceLabel.setText("正解！");
+					choiceLabel.setStyle("-fx-text-fill: black;");
+				} else {
+					choiceLabel.setText("残念…正解は" + ans + "です");
+					choiceLabel.setStyle("-fx-text-fill: red;");
 				}
-			})
-			.start();
+				//少し時間を置いて
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							Thread.sleep(1500);
+						} catch (Exception e) {
+						}
+						Platform.runLater(new Runnable() {//次の問題を表示する
+							@Override
+							public void run() {
+								count++;
+								choiceLabel.setText("");
+								if(count == getAnswers().size() -1) {
+									choiceLabel.setText("全問終了しました！");
+									choiceLabel.setStyle("-fx-text-fill: black;");
+								}else {
+									unselect();
+									setChoice("");
+									choiceLabel.setStyle("-fx-text-fill: black;");
+									showExercise(count);
+								}
+							}
+						});
+					}
+				})
+				.start();
+			}
 		}
 	}
 
